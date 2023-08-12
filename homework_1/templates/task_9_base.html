@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>base</title>
+    <style>
+        body {
+            max-width: 720px;
+            width: 80%;
+            margin: 0 auto;
+            background: #f1f1f1;
+        }
+
+        li {
+            font-size: 120%;
+            font-weight: bold;
+            color: blue;
+        }
+
+        menu {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            font-size: 80%;
+            font-weight: lighter;
+            font-style: italic;
+            font-family: "Times New Roman", sans-serif;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Интернет-магазин "СУПЕР-ПУПЕР"</h1>
+    <h2>Всегда супер-пупер выбор!</h2>
+</header>
+<menu>
+    {% block content -%}
+        {% block mainmenu %}
+            <ul>
+                {% for m in menu -%}
+                    <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+                    {#                    <li><a href="./templates/{{ m.url }}">{{ m.name }}</a></li>#}
+                {% endfor -%}
+            </ul>
+        {% endblock mainmenu %}
+    {% endblock -%}
+</menu>
+<footer>
+    <p class="address">Москва, Кутузовский пр., д. 96а</p>
+    <p class="email">superpuper@mail.ru</p>
+    <p class="tel">+7 050 123456</p>
+</footer>
+
+</body>
+</html>
