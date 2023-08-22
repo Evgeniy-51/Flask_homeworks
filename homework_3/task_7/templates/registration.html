@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="/reg" method="post">
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.name not in ["csrf_token", "submit"] -%}
+            <p>{{ field.label() }}<br>
+            {% if field.errors %}
+                {{ field(class="invalid") }}
+                <span style="color: #9C1A1C">
+            {% for e in field.errors %}
+                {{ e }}
+            {% endfor %}
+        </span>
+            {% else %}
+                {{ field() }}
+            {% endif %}
+        {% endfor %}
+        <p>{{ form.submit() }}</p>
+
+        {% for cat, msg in get_flashed_messages(True) %}
+            <h2>{{ msg }}</h2>
+        {% endfor %}
+
+    </form>
+{% endblock %}
