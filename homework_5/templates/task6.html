@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 6</title>
+</head>
+<body>
+
+
+<table>
+    <tr>
+        <th>User's ID</th>
+        <th>Name</th>
+        <th>E-mail</th>
+    </tr>
+    {% for u in users %}
+        <tr>
+            <td>{{ u.id_ }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<form method="POST" action="{{ url_for("add_user") }}">
+    <p><input type="submit" value="Добавить пользователя"></p>
+</form>
+
+</body>
+</html>
